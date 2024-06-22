@@ -1,13 +1,23 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://u13ti94r9mo630:p1ed07f3009a05b119f6f5bb4bd805b5e70bfc3f68351e3b1b2478c0d1ddb9c40@c7u1tn6bvvsodf.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d8t2a4i64crn6m'
+app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 from models import User, Product
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
