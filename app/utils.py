@@ -1,8 +1,8 @@
 # app/utils.py
 
-from app import db
-from app.models.user import User
-from app.models.product import Product
+from .db import db
+from .models.user import User
+from .models.product import Product
 from flask import current_app
 
 def initialize_database():
