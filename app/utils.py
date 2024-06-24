@@ -1,9 +1,9 @@
 # app/utils.py
-
-from .db import db
-from .models.user import User
-from .models.product import Product
+from flask_migrate import Migrate
+from app import create_app, db, Product, User
 from flask import current_app
+
+
 
 def initialize_database():
     with current_app.app_context():
@@ -15,6 +15,13 @@ def initialize_database():
             {'username': 'user1', 'password': 'password1'},
             {'username': 'user2', 'password': 'password2'}
         ]
+        # Add initial users
+        products = [
+            User(username='user1', password='password1'),
+            Product(name='Book', price=100),
+            Product(name='Car', price=20000)
+        ]
+
 
         for user_data in users:
             username = user_data['username']
@@ -32,6 +39,11 @@ def initialize_database():
 
         # Bulk insert products
         db.session.bulk_save_objects(products)
+        db.session.bulk_save_objects(users)
         db.session.commit()
 
         print("Initialization complete: Users and Products added successfully.")
+        
+
+if __name__ == '__main__':
+    initialize_database()
