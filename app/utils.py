@@ -1,9 +1,6 @@
 # app/utils.py
-from flask_migrate import Migrate
-from app import create_app, db, Product, User
+from app import db, Product, User
 from flask import current_app
-
-
 
 def initialize_database():
     with current_app.app_context():
