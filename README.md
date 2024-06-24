@@ -20,28 +20,7 @@ Step-by-Step Guide
 Install necessary packages using requirements.txt:
 > pip install -r requirements.txt
 
-5. My project structure is:
-brit_tech_test/
-├── app/
-│   ├── __init__.py
-│   ├── db.py
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── user.py
-│   │   └── product.py
-│   ├── routes.py
-│   └── templates/
-│       ├── register.html
-│       ├── login.html
-│       └── products.html
-├── venv/
-├── manage.py
-├── requirements.txt
-├── .env
-├── .gitignore
-└── runtime.txt
-
-6. Change .env > SQLALCHEMY_DATABASE_URI and DATABASE_URI to Heroku PostgreSQL URI
+5. Change .env > SQLALCHEMY_DATABASE_URI and DATABASE_URI to Heroku PostgreSQL URI
 e.g 
 SECRET_KEY=your_secret_key
 SQLALCHEMY_DATABASE_URI=postgresql://username:password@localhost/dbname
@@ -50,12 +29,12 @@ DATABASE_URI=postgresql://username:password@localhost/dbname
 These will be overridden by Heroku's environment variables later.
 
 
-7. app/__init__.py is used to load the environment variables and initialize the app with the database.
-8. In app/db.py am doing database initialization.
-9. app/models/ contains models which contains db tables settings.
-10. I have setup api routes in app/routes.py 
-11. Specify the Python runtime version in runtime.txt:
-12. requirements.txt includes the necessary packages.
+6. app/__init__.py is used to load the environment variables and initialize the app with the database.
+7. In app/db.py am doing database initialization.
+8. app/models/ contains models which contains db tables settings.
+9. I have setup api routes in app/routes.py 
+10. Specify the Python runtime version in runtime.txt:
+11. requirements.txt includes the necessary packages.
 
 How to Set Up Heroku?:
 1. Login to Heroku and create a new app, in my case I created brit-tech
